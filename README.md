@@ -13,8 +13,10 @@ Please note call the spinner component as below and set it's showSpinner propert
 
 instead of using it like below as it won't work.
 
-`<template if:true={showSpinner}>
-  <c-gs-spinner-with-bar></c-gs-spinner-with-bar>
-</template>`
+`<template if:true={showSpinner}>`
+
+  `<c-gs-spinner-with-bar></c-gs-spinner-with-bar>`
+
+`</template>`
 
 
