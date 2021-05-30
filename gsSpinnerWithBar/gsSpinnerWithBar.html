@@ -1,0 +1,19 @@
+<template>
+    <template if:true={showSpinner}>
+        <div class="slds-spinner_container slds-is-fixed">
+            <div role="status" class="slds-spinner slds-spinner_large slds-spinner_brand ">
+                <span class="slds-assistive-text">Calculating</span>
+                <div class="slds-spinner__dot-a"></div>
+                <div class="slds-spinner__dot-b"></div>
+            </div>
+            <div class="container">
+                <lightning-layout vertical-align="center">
+                    <lightning-layout-item> {percentage}% </lightning-layout-item>
+                    <lightning-layout-item flexibility="grow">
+                        <div class={barClass} style={style}></div>
+                    </lightning-layout-item>
+                </lightning-layout>
+            </div>
+        </div>
+    </template>
+</template>
