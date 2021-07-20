@@ -8,7 +8,7 @@
 import { LightningElement, api, track } from 'lwc';
 
 const TIMEOUT_DELAY = 1500;
-var intervalDelay = 150;
+var intervalDelay = 100;
 
 export default class GsSpinnerWithBar extends LightningElement {
 
@@ -21,7 +21,8 @@ export default class GsSpinnerWithBar extends LightningElement {
         return this._showSpinner;
     };
     set showSpinner(value) {
-        this.handleShowSpinner(value);
+        if (value == true || value == false) 
+            this.handleShowSpinner(value);
     }
 
     @track percentage = 0;
@@ -29,7 +30,7 @@ export default class GsSpinnerWithBar extends LightningElement {
     @track barClass = 'bar';
 
     connectedCallback() {
-        this.invokeBar();
+        //this.invokeBar();
     }
 
     disconnectedCallback() {
@@ -41,12 +42,11 @@ export default class GsSpinnerWithBar extends LightningElement {
         if (this.hideSpinner) {
             clearInterval(this.interval);
             intervalDelay = 15;
-            this.invokeBar();
-
         } else {
-            intervalDelay = 150;
+            intervalDelay = 100;
             this._showSpinner = true;
         }
+        this.invokeBar();
     }
 
     invokeBar() {
@@ -75,6 +75,8 @@ export default class GsSpinnerWithBar extends LightningElement {
 
         setTimeout(() => {
             this._showSpinner = false;
+            this.percentage = 0;
+            this.style = `width: ${this.percentage}%`;
         }, TIMEOUT_DELAY);
     }
 }
